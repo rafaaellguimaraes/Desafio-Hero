@@ -40,7 +40,7 @@ export default function Home({ data }: ISSRProps) {
 
 		if (totalpower < 250) {
 			return 'gray';
-		} else if (totalpower >= 251 && totalpower <= 400) {
+		} else if (totalpower >= 250 && totalpower <= 400) {
 			return 'green';
 		} else if (totalpower > 400 && totalpower <= 500) {
 			return 'purple';
