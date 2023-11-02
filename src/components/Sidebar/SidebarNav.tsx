@@ -1,6 +1,6 @@
 import { Avatar, Box, Flex, Text } from '@chakra-ui/react';
 import Router from 'next/router';
-import { MdHome } from 'react-icons/md';
+import { GiCardKingClubs, GiHistogram } from 'react-icons/gi';
 import NavLink from './NavLink';
 import NavSection from './NavSection';
 
@@ -39,10 +39,10 @@ const SidebarNav = () => {
         </Text>
       </Flex>
       <NavSection>
-        <NavLink href="/" icon={MdHome}>
+        <NavLink href="/" icon={GiCardKingClubs}>
           Cartas
         </NavLink>
-        <NavLink href="#" icon={MdHome}>
+        <NavLink href="#" icon={GiHistogram}>
           Histórico de batalha
         </NavLink>
       </NavSection>
