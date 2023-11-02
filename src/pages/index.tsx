@@ -3,31 +3,24 @@ import { IHeroProps } from '@/interface/IHeroProps';
 import { Box, Flex, Text } from '@chakra-ui/react';
 import { Inter } from 'next/font/google';
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { GiZeusSword } from 'react-icons/gi';
 import Apihero from '../services/api';
 
 const inter = Inter({ subsets: ['latin'] });
 
-export default function Home() {
-	const [hero, setHero] = useState<IHeroProps[]>([]);
+interface ISSRProps {
+	data: IHeroProps[];
+}
+
+export default function Home({ data }: ISSRProps) {
 	const [selectedHero, setSelectedHero] = useState<IHeroProps[]>([]);
 	const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 	const [search, setSearch] = useState<string>('');
 
-	useEffect(() => {
-		Apihero.get('api/ps/metahumans')
-			.then((response) => {
-				setHero(response.data);
-			})
-			.catch((error) => {
-				console.log(error);
-			});
-	}, []);
-
 	// Filtra heróis com base na pesquisa
-	const filteredHero = hero.filter((hero) => {
+	const filteredHero = data.filter((hero) => {
 		const heroName = hero.name.toLowerCase();
 		return heroName.includes(search.toLowerCase());
 	})
@@ -120,4 +113,22 @@ export default function Home() {
 			<HeroModal isOpen={isModalOpen} selectedHero={selectedHero} onClose={handleClosedModal}/>
 		</main>
 	);
+}
+
+export async function getServerSideProps() {
+	try {
+		const { data } = await Apihero.get('api/ps/metahumans');
+		return {
+			props: {
+				data
+			}
+		}
+	} catch (error) {
+		console.log(error);
+		return {
+			props: {
+				data: []
+			}
+		}
+	}
 }
