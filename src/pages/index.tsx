@@ -59,14 +59,12 @@ export default function Home({ data }: ISSRProps) {
     } else {
       // adiciona
       setSelectedHero([...selectedHero, hero]);
-			
+
 			if (selectedHero.length === 1) {
 				setIsModalOpen(true);
 			}
     }
   };
-
-	console.log(selectedHero);
 
   // Lida com o fechamento do modal
   const handleClosedModal = () => {
