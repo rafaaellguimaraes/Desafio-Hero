@@ -33,23 +33,25 @@ export default function Home({ data }: ISSRProps) {
     return combat + durability + intelligence + power + speed + strength;
   };
 
-	// Retorna a cor de fundo do herói
-	const getBackgroundColor = (hero: IHeroProps) => {
-		const { combat, durability, intelligence, power, speed, strength } = hero.powerstats;
-		const totalpower = combat + durability + intelligence + power + speed + strength;
+  // Retorna a cor de fundo do herói
+  const getBackgroundColor = (hero: IHeroProps) => {
+    const { combat, durability, intelligence, power, speed, strength } =
+      hero.powerstats;
+    const totalpower =
+      combat + durability + intelligence + power + speed + strength;
 
-		if (totalpower < 250) {
-			return 'gray';
-		} else if (totalpower >= 250 && totalpower <= 400) {
-			return 'green';
-		} else if (totalpower > 400 && totalpower <= 500) {
-			return 'purple';
-		} else if (totalpower > 500 && totalpower <= 600) {
-			return '#FF4500';
-		} else {
-			return 'red';
-		}
-	}
+    if (totalpower < 250) {
+      return 'gray';
+    } else if (totalpower >= 250 && totalpower <= 400) {
+      return 'green';
+    } else if (totalpower > 400 && totalpower <= 500) {
+      return 'purple';
+    } else if (totalpower > 500 && totalpower <= 600) {
+      return '#FF4500';
+    } else {
+      return 'red';
+    }
+  };
 
   // Lida com a seleção do herói
   const toggleSelectedHero = (hero: IHeroProps) => {
@@ -60,9 +62,9 @@ export default function Home({ data }: ISSRProps) {
       // adiciona
       setSelectedHero([...selectedHero, hero]);
 
-			if (selectedHero.length === 1) {
-				setIsModalOpen(true);
-			}
+      if (selectedHero.length === 1) {
+        setIsModalOpen(true);
+      }
     }
   };
 
@@ -107,14 +109,16 @@ export default function Home({ data }: ISSRProps) {
               <Box
                 key={hero.id}
                 backgroundColor={
-                  selectedHero.includes(hero) ? '#FFD700' : getBackgroundColor(hero)
+                  selectedHero.includes(hero)
+                    ? '#FFD700'
+                    : getBackgroundColor(hero)
                 }
                 p="4"
                 border="2px solid #000"
                 borderRadius="lg"
                 m="4"
                 onClick={() => toggleSelectedHero(hero)}
-								cursor='pointer'
+                cursor="pointer"
               >
                 <Image
                   src={hero.images.lg}
