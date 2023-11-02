@@ -13,9 +13,7 @@ const GridWrapper = ({ children }: IGridWrapperProps) => {
       <Sidebar />
       <Flex gridArea="content" flexDirection="column">
         <Header />
-        <Stack>
-          {children}
-        </Stack>
+        <Stack>{children}</Stack>
       </Flex>
     </Grid>
   );

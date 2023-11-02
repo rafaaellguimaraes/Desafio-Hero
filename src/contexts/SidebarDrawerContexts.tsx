@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import { createContext, ReactNode, useContext, useEffect } from 'react';
 
 interface SidebarDrawerProviderProps {
-	children: ReactNode
+  children: ReactNode;
 }
 
 type SidebarDrawerContextData = UseDisclosureReturn;
@@ -11,20 +11,20 @@ type SidebarDrawerContextData = UseDisclosureReturn;
 const SidebarDrawerContext = createContext({} as SidebarDrawerContextData);
 
 export const SidebarDrawerProvider = ({
-	children
+  children
 }: SidebarDrawerProviderProps) => {
-	const disclosure = useDisclosure()
-	const router = useRouter()
+  const disclosure = useDisclosure();
+  const router = useRouter();
 
-	useEffect(() => {
-		disclosure.onClose()
-	}, [disclosure, router.asPath])
+  useEffect(() => {
+    disclosure.onClose();
+  }, [disclosure, router.asPath]);
 
-	return (
-		<SidebarDrawerContext.Provider value={disclosure}>
-			{children}
-		</SidebarDrawerContext.Provider>
-	)
-}
+  return (
+    <SidebarDrawerContext.Provider value={disclosure}>
+      {children}
+    </SidebarDrawerContext.Provider>
+  );
+};
 
-export const useSidebarDrawer = () => useContext(SidebarDrawerContext)
+export const useSidebarDrawer = () => useContext(SidebarDrawerContext);

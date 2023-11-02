@@ -6,9 +6,9 @@ import { SidebarDrawerProvider } from '../contexts/SidebarDrawerContexts';
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <ChakraProvider>
-			<SidebarDrawerProvider>
-      	<Component {...pageProps} />
-			</SidebarDrawerProvider>
+      <SidebarDrawerProvider>
+        <Component {...pageProps} />
+      </SidebarDrawerProvider>
     </ChakraProvider>
   );
 }

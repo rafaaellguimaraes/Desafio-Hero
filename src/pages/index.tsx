@@ -55,72 +55,77 @@ export default function Home({ data }: ISSRProps) {
   };
 
   return (
-		<>
-		<GridWrapper>
-    <main className={`${inter.className}`} style={{ marginLeft: '250px' }}>
-      <Flex
-        justify="space-between"
-        alignItems="center"
-        p="10px"
-        justifyContent="flex-end"
-        mr={'5'}
-      >
-        <Flex alignItems="center">
-          <input
-            type="text"
-            placeholder="Pesquisar herói"
-            value={search}
-            onChange={e => setSearch(e.target.value)}
-            style={{
-              padding: '8px',
-              border: '1px solid #000',
-              borderRadius: '4px'
-            }}
-          />
-          <AiOutlineSearch
-            size={20}
-            color="#000"
-            style={{ cursor: 'pointer', marginLeft: '-30px' }}
-          />
-        </Flex>
-      </Flex>
-      <Flex display="flex" flexWrap="wrap" justify="center" px="4">
-        {filteredHero.map(hero => (
-          <Box
-            key={hero.id}
-            backgroundColor={
-              selectedHero.includes(hero) ? '#FFD700' : '#006400'
-            }
-            p="4"
-            border="2px solid #000"
-            borderRadius="lg"
-            m="4"
-            onClick={() => toggleSelectedHero(hero)}
+    <>
+      <GridWrapper>
+        <main className={`${inter.className}`} style={{ marginLeft: '250px' }}>
+          <Flex
+            justify="space-between"
+            alignItems="center"
+            p="10px"
+            justifyContent="flex-end"
+            mr={'5'}
           >
-            <Image
-              src={hero.images.lg}
-              alt="imagem do hero"
-              width={150}
-              height={100}
-            />
-            <Text textAlign="center" mt="2" color={'#fff'}>
-              {hero.name}
-            </Text>
-            <Text display="flex" color={'#fff'} justifyContent="center" mt="2">
-              <GiZeusSword size={20} color={'#fff'} />
-              {calculatePowerstats(hero)}
-            </Text>
-          </Box>
-        ))}
-      </Flex>
-      <HeroModal
-        isOpen={isModalOpen}
-        selectedHero={selectedHero}
-        onClose={handleClosedModal}
-      />
-    </main>
-		</GridWrapper>
-		</>
+            <Flex alignItems="center">
+              <input
+                type="text"
+                placeholder="Pesquisar herói"
+                value={search}
+                onChange={e => setSearch(e.target.value)}
+                style={{
+                  padding: '8px',
+                  border: '1px solid #000',
+                  borderRadius: '4px'
+                }}
+              />
+              <AiOutlineSearch
+                size={20}
+                color="#000"
+                style={{ cursor: 'pointer', marginLeft: '-30px' }}
+              />
+            </Flex>
+          </Flex>
+          <Flex display="flex" flexWrap="wrap" justify="center" px="4">
+            {filteredHero.map(hero => (
+              <Box
+                key={hero.id}
+                backgroundColor={
+                  selectedHero.includes(hero) ? '#FFD700' : '#006400'
+                }
+                p="4"
+                border="2px solid #000"
+                borderRadius="lg"
+                m="4"
+                onClick={() => toggleSelectedHero(hero)}
+              >
+                <Image
+                  src={hero.images.lg}
+                  alt="imagem do hero"
+                  width={150}
+                  height={100}
+                />
+                <Text textAlign="center" mt="2" color={'#fff'}>
+                  {hero.name}
+                </Text>
+                <Text
+                  display="flex"
+                  color={'#fff'}
+                  justifyContent="center"
+                  mt="2"
+                >
+                  <GiZeusSword size={20} color={'#fff'} />
+                  {calculatePowerstats(hero)}
+                </Text>
+              </Box>
+            ))}
+          </Flex>
+          <HeroModal
+            isOpen={isModalOpen}
+            selectedHero={selectedHero}
+            onClose={handleClosedModal}
+          />
+        </main>
+      </GridWrapper>
+    </>
   );
 }
 

@@ -2,11 +2,11 @@ import Router from 'next/router';
 import { MdMenu } from 'react-icons/md';
 
 import {
-	Box,
-	Icon,
-	IconButton,
-	Image,
-	useBreakpointValue
+  Box,
+  Icon,
+  IconButton,
+  Image,
+  useBreakpointValue
 } from '@chakra-ui/react';
 
 import { useSidebarDrawer } from '../../contexts/SidebarDrawerContexts';
@@ -32,7 +32,7 @@ const Header = () => {
       {!isWideVersion && (
         <IconButton
           aria-label="Abrir menu"
-          icon={<Icon as={MdMenu} color='white' fontSize={30} />}
+          icon={<Icon as={MdMenu} color="white" fontSize={30} />}
           variant="unstyled"
           alignSelf="center"
           onClick={onOpen}
@@ -50,7 +50,7 @@ const Header = () => {
         }
       >
         <Image
-          src='../../../images/logo.jpg'
+          src="../../../images/logo.jpg"
           alt="Logo Marvel"
           h="130px"
           objectFit="contain"
