@@ -1,3 +1,4 @@
+import GridWrapper from '@/components/GridWrapper';
 import HeroModal from '@/components/ModalHero';
 import { IHeroProps } from '@/interface/IHeroProps';
 import { Box, Flex, Text } from '@chakra-ui/react';
@@ -54,7 +55,9 @@ export default function Home({ data }: ISSRProps) {
   };
 
   return (
-    <main className={`${inter.className}`}>
+		<>
+		<GridWrapper>
+    <main className={`${inter.className}`} style={{ marginLeft: '250px' }}>
       <Flex
         justify="space-between"
         alignItems="center"
@@ -116,6 +119,8 @@ export default function Home({ data }: ISSRProps) {
         onClose={handleClosedModal}
       />
     </main>
+		</GridWrapper>
+		</>
   );
 }
 
