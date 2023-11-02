@@ -96,6 +96,7 @@ export default function Home({ data }: ISSRProps) {
                 borderRadius="lg"
                 m="4"
                 onClick={() => toggleSelectedHero(hero)}
+								cursor='pointer'
               >
                 <Image
                   src={hero.images.lg}
